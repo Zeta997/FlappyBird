@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://dvqwt8j15fk82"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_v2xs3"]
+[ext_resource type="Texture2D" uid="uid://bvcbefi7geyuq" path="res://Sprites/bluebird-downflap.png" id="2_5ht7x"]
+[ext_resource type="Texture2D" uid="uid://cp3uok4q3tx5u" path="res://Sprites/bluebird-upflap.png" id="2_wgpmo"]
+[ext_resource type="Texture2D" uid="uid://cn30k8tobbspc" path="res://Sprites/bluebird-midflap.png" id="4_ntesc"]
+[ext_resource type="Texture2D" uid="uid://c2mc8eeg3ys3h" path="res://Sprites/redbird-upflap.png" id="5_cynki"]
+[ext_resource type="Texture2D" uid="uid://b5l3m7nymxls7" path="res://Sprites/redbird-midflap.png" id="6_coiod"]
+[ext_resource type="Texture2D" uid="uid://c6kb8wtetmlhp" path="res://Sprites/redbird-downflap.png" id="7_yadu7"]
+[ext_resource type="Texture2D" uid="uid://pfrwhgb5dsx3" path="res://Sprites/yellowbird-upflap.png" id="8_0rvt6"]
+[ext_resource type="Texture2D" uid="uid://byerab8ce58ir" path="res://Sprites/yellowbird-midflap.png" id="9_18j3y"]
+[ext_resource type="Texture2D" uid="uid://k6ledsj3m7q2" path="res://Sprites/yellowbird-downflap.png" id="10_hgma5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqkgv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wgpmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ntesc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5ht7x")
+}],
+"loop": true,
+"name": &"fly_blue",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cynki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_coiod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yadu7")
+}],
+"loop": true,
+"name": &"fly_red",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_0rvt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_18j3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hgma5")
+}],
+"loop": true,
+"name": &"fly_yellow",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lc4xe"]
+radius = 11.0
+height = 36.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(241, 209)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_v2xs3")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qqkgv")
+animation = &"fly_blue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lc4xe")

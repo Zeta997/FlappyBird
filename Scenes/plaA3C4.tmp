@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvqwt8j15fk82"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_v2xs3"]
+[ext_resource type="Texture2D" uid="uid://bvcbefi7geyuq" path="res://Sprites/bluebird-downflap.png" id="2_5ht7x"]
+[ext_resource type="Texture2D" uid="uid://cp3uok4q3tx5u" path="res://Sprites/bluebird-upflap.png" id="2_wgpmo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqkgv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wgpmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5ht7x")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lc4xe"]
+radius = 11.0
+height = 28.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(241, 209)
+script = ExtResource("1_v2xs3")
+gravity = 0
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qqkgv")
+animation = &"fly"
+frame_progress = 0.42384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lc4xe")
